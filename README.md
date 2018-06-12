@@ -2,7 +2,7 @@
 
 Some functions used in MatLab that were ported to Python. More details of the operation, please see the tutorial:
 
-* [https://edersoncorbari.github.io/tutorials/matlab-postgresql/](https://edersoncorbari.github.io/tutorials/matlab-postgresql/);
+* [https://edersoncorbari.github.io/tutorials/mat2py/](https://edersoncorbari.github.io/tutorials/mat2py/)
 
 ## Requirements
 
