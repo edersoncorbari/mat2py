@@ -10,6 +10,13 @@ It is necessary only to have Python3 installed on your machine, and Pipenv, to i
 
 * [https://github.com/pypa/pipenv](https://github.com/pypa/pipenv)
 
+If you use Linux Ubuntu run:
+
+```shell
+sudo apt install python3-pip
+sudo pip3 install pipenv
+```
+
 ## Installing and Testing
 
 With pipenv installed on the machine use the following commands:
