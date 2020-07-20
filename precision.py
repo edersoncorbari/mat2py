@@ -6,9 +6,9 @@
 #
 # MAT2PY - Portability of Matlab Functions for Python.
 #
-# Copyright (c) 2018 Ederson de Moura Corbari
+# Copyright (c) 2018-2020 Ederson Corbari
 #
-# @author Ederson de Moura Corbari
+# @author Ederson Corbari
 #
 # $Id: EDMC Exp$
 #
@@ -74,10 +74,15 @@ class Precision(object):
         s = 'secounds' if seconds > 0 else s
         s = 'minutes' if minutes > 0 else s
         s = 'hours' if hours > 0 else s
-        m = (': > Elapsed time is %d:%d:%d {}.' % (hours, minutes, seconds)).format(s)
+        m = (': > Elapsed time is %d:%d:%d {}.' % (
+            hours, minutes, seconds)).format(s)
         print(self.sprintf("%s\n", m))
 
-    def dtrange(self, start: datetime.datetime, end: datetime.datetime, delta: dict) -> datetime.datetime:
+    def dtrange(
+            self,
+            start: datetime.datetime,
+            end: datetime.datetime,
+            delta: dict) -> datetime.datetime:
         """
         Creates a range of dates with start and end.
 
@@ -95,7 +100,8 @@ class Precision(object):
         """
         try:
             current = start
-            if not isinstance(delta, datetime.timedelta): delta = datetime.timedelta(**delta)
+            if not isinstance(delta, datetime.timedelta):
+                delta = datetime.timedelta(**delta)
             while current < end:
                 yield current
                 current += delta
@@ -127,7 +133,8 @@ class Precision(object):
         try:
             n = len(x)
             y = numpy.sort(x)
-            return float((numpy.interp(q, numpy.linspace(1 / (2 * n), (2 * n - 1) / (2 * n), n), y)))
+            return float((numpy.interp(q, numpy.linspace(
+                1 / (2 * n), (2 * n - 1) / (2 * n), n), y)))
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
         return float(0.0)
@@ -179,7 +186,8 @@ class Precision(object):
             - :obj:`Exception` Some other error not expected.
         """
         try:
-            return datetime.date.toordinal(datetime.date(d.year, d.month, d.day)) + 366
+            return datetime.date.toordinal(
+                datetime.date(d.year, d.month, d.day)) + 366
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
         return int(0)
@@ -200,7 +208,7 @@ class Precision(object):
         try:
             return self.datenum(datetime.date(d.year, d.month, d.day))
         except Exception as e:
-            printf(self.m_info, ': Exception = ', str(e))
+            print(self.m_info, ': Exception = ', str(e))
         return int(0)
 
     @dispatch(int, int, int)
@@ -399,9 +407,9 @@ class Precision(object):
         """
         assert df.size >= 1, self.__m_err.format('>=1')
         l = list([])
-
         try:
-            for i, r in df.iterrows(): l.append(str(r[k]).upper())
+            for _i, r in df.iterrows():
+                l.append(str(r[k]).upper())
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
         return list(l)
@@ -450,7 +458,8 @@ class Precision(object):
         """
         assert len(l) >= 1, self.__m_err.format('>=1')
         try:
-            return reduce(lambda y, x: y.append(x) or y if x not in y else y, l, [])
+            return reduce(lambda y, x: y.append(
+                x) or y if x not in y else y, l, [])
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
 
@@ -481,7 +490,8 @@ class Precision(object):
         """
         assert l.size >= 1, self.__m_err.format('>=1')
         try:
-            a, b, c, d = numpy.unique(l, return_index=True, return_counts=True, return_inverse=True)
+            a, b, c, d = numpy.unique(
+                l, return_index=True, return_counts=True, return_inverse=True)
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
         if a.size > 1:
@@ -531,12 +541,11 @@ class Precision(object):
         assert len(v0) >= 1, self.__m_err.format('>=1')
         assert len(v1) >= 1, self.__m_err.format('>=1')
         assert len(v0) == len(v1), self.__m_err.format('==1')
-
         r = list([])
-
         try:
             for i, j in enumerate(zip(v0, v1)):
-                if v0[i] == v1[i]: r.append([i, j])
+                if v0[i] == v1[i]:
+                    r.append([i, j])
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
 
@@ -564,7 +573,6 @@ class Precision(object):
         assert len(v0) >= 1, self.__m_err.format('>=1')
         assert len(v1) >= 1, self.__m_err.format('>=1')
         assert len(v0) == len(v1), self.__m_err.format('==1')
-
         try:
             for i in v0:
                 yield [p for p, j in enumerate(v1) if i == j]
@@ -620,10 +628,9 @@ class Precision(object):
 
         """
         r0 = list([])
-
         try:
-            for i in list(l0): r0.append(1 if i == s else 0)
-
+            for i in list(l0):
+                r0.append(1 if i == s else 0)
         except Exception as e:
             print(self.m_info, ': Exception = ', str(e))
         return list(r0)
