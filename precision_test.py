@@ -43,7 +43,7 @@ class TestPrecision(unittest.TestCase):
         x = [p.datenum(i.date()) for i in d]
         self.assertEqual(len(x), 2530, 'Failed datenum!')
         # y = [p.datenum(i.year, i.month, i.day) for i in d]
-        self.assertEqual(len(x), 2530, 'Failed datenum 2!')
+        # self.assertEqual(len(x), 2530, 'Failed datenum 2!')
 
     def test_prctile(self):
         p = Precision()
